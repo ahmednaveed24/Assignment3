@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headless CMS Frontend</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .content-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .content-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 1rem;
+      width: calc(33.333% - 2rem);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .content-card:hover {
+      transform: scale(1.05);
+    }
+
+    .content-card img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+
+    .content-card h2 {
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .content-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .content-card a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .content-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Headless CMS Content</h1>
+  </header>
+  <h2 align=center> Lab 2 - Web Development Frameworks </h2>
+  <p>The ones that I choose would be Sanity and Strapi. 
+    For Sanity for me is easier way to use it and gets a pretty good understanding of it. 
+    The publishing is a lot efficient when it comes to managing, edit and delivering content 
+    across with different users who can use this at the same time all together. 
+    You can customize and hosted anywhere on Sanity. As for Strapi it helps us to find you the 
+    future-proof your modern website with features like unique field types and custom layouts. </p>
+  <p>
+    Strapi CMS is a free, open-soruce that allows users to create APIs and manage content for websites,
+mobiles apps and other digital services. Strapi CMS is, headless which that means it's back-end only CMS
+
+Contentful CMS is a cloud-based system based that helps businesses organize and distribute content across
+multiple channels. Contentful is a CMS headless approach. This means it only handles the backend of a website application, 
+eliminating the presentation layer from its duties.Contentful CMS have some features to it like Content Hub, Omnichannel publishing, 
+Shared content models, Contentful Studio, Third-party app marketplace and AI Content Generator.
+Content hub can add, manage and using content various digital channels. For Omnichannel publishing can
+publish and manage content for websites, mobile apps and other channels from one place. For shared content
+models can create and sync common components across multiple channels. For Contentful Studio can automate
+content creation, assembly, management and publishing. The Third-party app marketplace can expand
+contentful's features such as with apps from the marketplace. AI Content Generator can quickly generate
+content elements, SEO matadata and localize content.
+
+Sanity CMS is a powerful headless content management system with a flexible structure. The components of 
+Sanity CMS are broadly divided into the core platform and studio components. Sanity CMS is a cloud-based,
+open-source content management system that allows users to manage, edit and deliver content across devices.
+Real-time collabration multiples users can work on the same content simultaneously. Built-in publishing
+workflows helps manage the content lifecycle. Sanity Studio is an open-source React to a Single Page application
+that can be customized and hosted anywhere. Portable Text is an open-source specification for block
+content that can be presented anywhere. Schemas define the structure of the content by creating Schemas
+to define the fields and types of data to manage. 
+
+Prismic is a headless content management system (CMS) that helps businesses manage and deliver content 
+to any device or platform. Prismic provides an intuitive interface for creating and managing content, 
+and APIs for delivering it to a website or app. The benefits of Prismic which are Flexibility, preview
+and schedule workflows and Real-time preview. 
+
+Ghost is a CMS that helps users create, publish and manage content online. It's an open-source platform 
+that's designed to be easy to use and fast, with a focus on the writing and editing experience.
+Writing experience that Ghost offers is a clean, distraction-free writing experience. 
+Publishing Ghost includes tools for publishing content by web and email newsletter.
+Content organization Ghost offers tagging and categorization, and the ability to define content collections.
+
+
+
+
+The ones that I choose would be Sanity and Strapi. For Sanity for me is more easier way to use it and 
+gets a pretty good understanding of it. The publishing is a lot efficient when it comes to managing, edit
+and delivering content across with different users who can use this at the sametime all together. You
+can customized and hoster anywhere on Sanity. As for Strapi 
+  </p>
+  <h2 align=center>Video Examples </h2>
+  <p>Sanity CMS Beginners Tutorial: <a href="https://www.youtube.com/watch?v=bDVAQZVeebw">https://www.youtube.com/watch?v=bDVAQZVeebw</a><br>
+    Content Platforms Explained in 100 Seconds // Build your own with Sanity: <a href="https://www.youtube.com/watch?v=c_8cplBi_gE&t=349s">https://www.youtube.com/watch?v=c_8cplBi_gE&t=349s</a><br>
+    Strapi CMS Beginners Tutorial: <a href="https://www.youtube.com/watch?v=958IhsqtnyY">https://www.youtube.com/watch?v=958IhsqtnyY</a><br>
+    Strapi Free Open-Source Headless CMS: <a href="https://www.youtube.com/watch?v=EaVfHcuGI6g">https://www.youtube.com/watch?v=EaVfHcuGI6g</a><br>
+    </p>
+  <main>
+    <section class="content-container" id="content-container">
+      <!-- Dynamic content will be loaded here -->
+    </section>
+  </main>
+
+  <script>
+    // Replace this URL with your headless CMS API endpoint
+    const apiUrl = "http://localhost:1337/api/blogs"; // Example API URL
+
+    async function fetchContent() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        const container = document.getElementById("content-container");
+
+        data.data.forEach(item => {
+          const card = document.createElement("div");
+          card.classList.add("content-card");
+
+          // Construct the content card with data
+          card.innerHTML = `
+            <img src="${item.attributes.image}" alt="${item.attributes.title}">
+            <h2>${item.attributes.title}</h2>
+            <p>${item.attributes.description}</p>
+            <a href="${item.attributes.link}" target="_blank">Read More</a>
+          `;
+
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    }
+
+    // Fetch content on page load
+    document.addEventListener("DOMContentLoaded", fetchContent);
+  </script>
+</body>
+</html>
